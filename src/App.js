@@ -1,11 +1,12 @@
 import React from 'react'
 import Navbar from './components/navbar'
+import QrCodeProvider from './contexts/qrcode'
 
 const App = () => {
   return (
-    <div>
+    <QrCodeProvider>
       <Navbar />
-    </div>
+    </QrCodeProvider>
   )
 }
 

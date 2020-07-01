@@ -1,14 +1,18 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useReducer, useEffect } from 'react'
 import qrCodeReducer from '../reducers/qrcode'
 
-const QrCodeContext = createContext('qrcode')
+export const QrCodeContext = createContext()
 
 const DEFAULT = {
   str: '',
 }
 
-const QrCodeContextProvider = props => {
+const QrCodeProvider = props => {
   const [ data, dispatch ] = useReducer(qrCodeReducer, DEFAULT)
+
+  useEffect(()=>{
+    console.log('data changed')  
+  }, [data])
 
   const updateStr = str => {
     dispatch({
@@ -29,3 +33,5 @@ const QrCodeContextProvider = props => {
     </QrCodeContext.Provider>
   )
 }
+
+export default QrCodeProvider
