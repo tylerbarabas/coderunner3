@@ -1,2 +1,10 @@
 $primary: #1d22a4;
 @import "node_modules/bulmaswatch/cosmo/bulmaswatch";
+
+html, body{
+  height: 100%;
+  background-color: $primary;
+}
+.is-fullheight{
+  height: 100%;
+}
