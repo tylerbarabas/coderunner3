@@ -2,10 +2,10 @@ import React from 'react'
 
 const Navbar = () => {
   return (
-    <nav className="navbar has-background-primary" role="navigation" aria-label="main navigation">
+    <nav className="navbar is-primary" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
         <a className="navbar-item" href="https://acme.codes">
-          <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: Free, open source, and modern CSS framework based on Flexbox" width="112" height="28" />
+          <img src="/logo.png" alt="Bulma: Free, open source, and modern CSS framework based on Flexbox" width="112" height="28" />
         </a>
 
         <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false">
