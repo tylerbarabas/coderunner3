@@ -4,8 +4,14 @@ import { faHome } from '@fortawesome/free-solid-svg-icons'
 import { QrCodeContext } from '../../contexts/qrcode'
 
 const Navbar = () => {
-  const { data, methods } = useContext(QrCodeContext)
-  console.log('data', data, 'methods', methods)
+  const { qrCode, qrCodeMethods } = useContext(QrCodeContext)
+  const {
+    updateStr,
+  } = qrCodeMethods
+  const buttonClicked = ()=>{
+    const newStr = qrCode.str + '1'
+    updateStr(newStr)
+  }
   return (
     <nav className="navbar is-primary px-6" role="navigation" aria-label="main navigation">
       <div className="navbar-menu">
@@ -27,6 +33,12 @@ const Navbar = () => {
           <div className="navbar-item">
             <img src="/logo.png" alt="Coderunner | Animated QR Code Generator" width="112" height="28" />
           </div>
+          <button
+            onClick={buttonClicked}
+            type="button"
+          >
+            Test
+          </button>
         </div>
       </div>
     </nav>
