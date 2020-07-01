@@ -1,5 +1,4 @@
 const qrCodeReducer = (state, action) =>{
-  console.log('look', state, action)
   switch(action.type){
     case 'ORDER_REQUESTING':
       return {
