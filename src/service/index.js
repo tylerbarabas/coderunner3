@@ -1,5 +1,5 @@
 //Vars to export
-const DOMAIN = 'service.acme.codes'
+const DOMAIN = 'http://api.animatedcodes.net'
 const constants = {
   DOMAIN,
 }
@@ -10,7 +10,7 @@ const methods = {
     const {
       msg,
     } = args
-    const uri = `https://api.acme.codes/new?msg=${msg}&frameNumber=1&anim=staticCodeOnly&xres=300&yres=300&gif=0&fbx=0`
+    const uri = `${DOMAIN}/new?msg=${msg}&frameNumber=1&anim=staticCodeOnly&xres=300&yres=300&gif=0&fbx=0`
     const res = await fetch(uri)
     return res
   },

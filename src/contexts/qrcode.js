@@ -59,7 +59,7 @@ const QrCodeProvider = props => {
       const r = await Service.createStaticCode(args)
       let newid = null
       if (r.ok) {
-        newid = await r.toJson()
+        newid = await r.json()
         _updateCallStatus('success', newid)
       } else {
         _updateCallStatus('fail')
