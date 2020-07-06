@@ -1,8 +1,10 @@
+const DOMAIN = 'https://api.acme.codes'
+const _getFullPath = path => `${DOMAIN}${path}`
+
 //URIS
-const uri_createStaticCode = '/new?msg=:msg&frameNumber=1&anim=staticCodeOnly&xres=300&yres=300&gif=0&fbx=0'
+const uri_createStaticCode = _getFullPath('/new?msg=:msg&frameNumber=1&anim=staticCodeOnly&xres=300&yres=300&gif=0&fbx=0')
 
 //Vars to export
-const DOMAIN = 'https://api.acme.codes'
 const constants = {
   DOMAIN,
 }
