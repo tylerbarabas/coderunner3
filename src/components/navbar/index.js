@@ -27,18 +27,12 @@ const Navbar = () => {
               >contact us</a>
           </div>
         </div>
-      </div>
         <div className="is-pulled-right">
           <div className="navbar-item">
-            <img src="/logo.png" alt="Coderunner | Animated QR Code Generator" style={{height: '50px', width: 'auto'}}/>
+            <img src="/logo.png" alt="Coderunner | Animated QR Code Generator"/>
           </div>
-          <button
-            onClick={buttonClicked}
-            type="button"
-          >
-            Test
-          </button>
         </div>
+      </div>
     </nav>
   )
 }
