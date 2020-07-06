@@ -8,29 +8,21 @@ const Navbar = () => {
   const {
     updateStr,
   } = qrCodeMethods
-  const buttonClicked = ()=>{
-    const newStr = qrCode.str + '1'
-    updateStr(newStr)
-  }
   return (
-    <nav className="navbar is-primary px-6" role="navigation" aria-label="main navigation">
-      <div className="navbar-brand" style={{width: '100%'}}>
-        <a className="navbar-item" href="https://acme.codes">
+    <nav className="navbar is-primary px-2" role="navigation" aria-label="main navigation">
+      <div className="columns is-vcentered is-fullwidth is-desktop is-mobile">
+        <div className="column">
           <FontAwesomeIcon icon={faHome} size='2x' />
-        </a>
-        <div className="columns is-vcentered ml-6 pl-6 is-hidden-touch">
-          <div className="column is-size-4 ml-6 pl-6">
-            For advanced features, <a
-                href="http://acme.codes/contact"
-                className="has-text-white"
-                style={{textDecoration: 'underline'}}
-              >contact us</a>
-          </div>
         </div>
-        <div className="is-pulled-right">
-          <div className="navbar-item">
-            <img src="/logo.png" alt="Coderunner | Animated QR Code Generator"/>
-          </div>
+        <div className="column is-hidden-touch is-size-4">
+          For advanced features, <a
+              href="http://acme.codes/contact"
+              className="has-text-white"
+              style={{textDecoration: 'underline'}}
+            >contact us</a>
+        </div>
+        <div className="column has-text-right pt-5">
+          <img src="/logo.png" alt="Coderunner | Animated QR Code Generator"/>
         </div>
       </div>
     </nav>
