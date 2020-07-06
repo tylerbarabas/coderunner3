@@ -1,5 +1,5 @@
 //Vars to export
-const DOMAIN = 'http://api.animatedcodes.net'
+const DOMAIN = 'https://api.acme.codes'
 const constants = {
   DOMAIN,
 }
