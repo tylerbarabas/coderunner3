@@ -10,7 +10,7 @@ const Navbar = () => {
   } = qrCodeMethods
   return (
     <nav className="navbar is-primary px-2" role="navigation" aria-label="main navigation">
-      <div className="columns is-vcentered is-fullwidth is-desktop is-mobile">
+      <div className="columns is-vcentered is-desktop is-mobile" style={{width: '102%'}}>
         <div className="column">
           <FontAwesomeIcon icon={faHome} size='2x' />
         </div>
