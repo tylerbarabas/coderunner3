@@ -1,4 +1,4 @@
-const qrCodeReducer = (state, action) =>{
+export default (state, action) =>{
   switch(action.type){
     case 'ORDER_REQUESTING':
       return {
@@ -35,5 +35,3 @@ const qrCodeReducer = (state, action) =>{
       return state
   }
 }
-
-export default qrCodeReducer
