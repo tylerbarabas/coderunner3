@@ -15,15 +15,42 @@ const DEFAULT = {
   isFullHD: false,
 }
 
+const _makeObject = innerWidth =>{
+  let {
+    isMobile,
+    isTablet,
+    isTouch,
+    isDesktop,
+    isWideScreen,
+    isFullHD,
+  } = DEFAULT
+  if (innerWidth <= 768) {
+    isMobile = true
+    isTouch = true
+  } else if (innerWidth > 768 && innerWidth < 1024) {
+    isTablet = true
+    isTouch = true
+  } else if (innerWidth >= 1024) {
+    isDesktop = true
+    if (innerWidth >= 1216) isWideScreen = true
+    if (innerWidth >= 1408) isFullHD = true
+  }
+  return {
+    isMobile,
+    isTablet,
+    isTouch,
+    isDesktop,
+    isWideScreen,
+    isFullHD,
+  }
+}
+
+
 const ResponsiveProvider = props => {
   const [ responsive, dispatch ] = useReducer(responsiveReducer, DEFAULT)
-  const getObject = (innerWidth, innerHeight) =>{
-    let obj = DEFAULT
-    
-    return obj
-  }
-  const updateResponsive = (innerWidth, innerHeight) => {
-    const obj = getObject(innerWidth, innerHeight)
+
+  const updateResponsive = innerWidth => {
+    const obj = _makeObject(innerWidth)
     dispatch({
       action: 'UPDATE',
       ...obj,

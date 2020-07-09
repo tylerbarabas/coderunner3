@@ -9,13 +9,11 @@ const ResponsiveUpdater = props => {
     responsive,
     updateResponsive,
   } = useContext(ResponsiveContext)
-  console.log('responsive', responsive)
   const _updateResponsive = e => {
     const {
-      innerHeight,
       innerWidth,
     } = e.target
-    updateResponsive(innerWidth, innerHeight)
+    updateResponsive(innerWidth)
   }
   useEffect(()=>{
     window.addEventListener('resize',_updateResponsive)
