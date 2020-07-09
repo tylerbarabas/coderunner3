@@ -1,14 +1,17 @@
 import React from 'react'
 import Navbar from './components/navbar'
 import QrCodeProvider from './contexts/qrcode'
+import ResponsiveProvider from './contexts/responsive'
 import Wrapper from './views/wrapper'
 
 const App = () => {
   return (
-    <QrCodeProvider>
-      <Navbar />
-      <Wrapper />
-    </QrCodeProvider>
+    <ResponsiveProvider>
+      <QrCodeProvider>
+        <Navbar />
+        <Wrapper />
+      </QrCodeProvider>
+    </ResponsiveProvider>
   )
 }
 
