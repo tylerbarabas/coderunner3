@@ -5,11 +5,18 @@ export default class Preview extends React.Component {
   getPreview(src){
     if (src.indexOf('/frames/1') !== -1) {
       return (
-        <figure className="image is-square">
-          <img
-            src={src}
-          />
-        </figure>
+        <div
+          style={{
+            padding: '15%',
+          }}
+        >
+          <figure className="image is-1by1"
+          >
+            <img
+              src={src}
+            />
+          </figure>
+        </div>
       )
     }
     return (
