@@ -17,7 +17,6 @@ const DEFAULT = {
 
 const QrCodeProvider = props => {
   const [ qrCode, dispatch ] = useReducer(qrCodeReducer, DEFAULT)
-
   
   const apicall = async args => {
     updateCallStatus('requesting')

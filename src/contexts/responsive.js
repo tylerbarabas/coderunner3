@@ -1,5 +1,6 @@
-import React {
+import React, {
   createContext,
+  useReducer,
 } from 'react'
 import responsiveReducer from '../reducers/responsive'
 
@@ -13,15 +14,16 @@ const DEFAULT = {
   isFullHD: false,
 }
 
-const updateResponsive = r => {
-  dispatch({
-    action: 'UPDATE',
-    ...r
-  })
-}
-
 const ResponsiveProvider = props => {
   const [ responsive, dispatch ] = useReducer(responsiveReducer, DEFAULT)
+
+  const updateResponsive = r => {
+    dispatch({
+      action: 'UPDATE',
+      ...r
+    })
+  }
+
   return (
     <ResponsiveContext.Provider
       value={{responsive, updateResponsive}}
@@ -30,3 +32,5 @@ const ResponsiveProvider = props => {
     </ResponsiveContext.Provider>
   )
 }
+
+export default ResponsiveProvider
