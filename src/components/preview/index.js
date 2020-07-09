@@ -1,8 +1,7 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
-export default class Preview extends React.Component {
-  getPreview(src){
+const Preview = props => {
+  const _getPreview = src => {
     if (src.indexOf('/frames/1') !== -1) {
       return (
         <div
@@ -29,20 +28,14 @@ export default class Preview extends React.Component {
       />
     )
   }
-  render(){
-    const {
-      src,
-    } = this.props
-    return (
-      <div className="columns is-vcentered is-fullheight">
-        <div className="column  has-text-centered">
-          {this.getPreview(src)}
-        </div>
-      </div> 
-    )
-  }
+
+  return (
+    <div className="columns is-vcentered is-fullheight">
+      <div className="column  has-text-centered">
+        {_getPreview(props.src)}
+      </div>
+    </div> 
+  )
 }
 
-Preview.propTypes = {
-  src: PropTypes.string,
-}
+export default Preview
