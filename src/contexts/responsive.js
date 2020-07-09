@@ -8,6 +8,7 @@ export const ResponsiveContext = createContext()
 
 const DEFAULT = {
   isMobile: false,
+  isTablet: false,
   isTouch: false,
   isDesktop: false,
   isWideScreen: false,
@@ -18,6 +19,7 @@ const ResponsiveProvider = props => {
   const [ responsive, dispatch ] = useReducer(responsiveReducer, DEFAULT)
   const getObject = (innerWidth, innerHeight) =>{
     let obj = DEFAULT
+    
     return obj
   }
   const updateResponsive = (innerWidth, innerHeight) => {

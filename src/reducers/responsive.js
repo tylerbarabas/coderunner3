@@ -4,6 +4,7 @@ export default (state, action) => {
     return {
       ...state,
       isMobile: action.isMobile,
+      isTablet: action.isTablet,
       isTouch: action.isTouch,
       isDesktop: action.isDesktop,
       isWideScreen: action.isWideScreen,
