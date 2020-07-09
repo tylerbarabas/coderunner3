@@ -4,7 +4,7 @@ import { faHome } from '@fortawesome/free-solid-svg-icons'
 import { QrCodeContext } from '../../contexts/qrcode'
 
 const Navbar = () => {
-  const { qrCode, qrCodeMethods } = useContext(QrCodeContext)
+  const { qrCodeMethods } = useContext(QrCodeContext)
   const {
     updateStr,
   } = qrCodeMethods
