@@ -15,6 +15,8 @@ const DEFAULT = {
   str: '',
 }
 
+let throttle = null
+
 const QrCodeProvider = props => {
   const [ qrCode, dispatch ] = useReducer(qrCodeReducer, DEFAULT)
   
@@ -54,16 +56,11 @@ const QrCodeProvider = props => {
     dispatch(obj)
   }
 
-  let throttle = null
   const updateStr = str => {
-    throttle = setTimeout(()=>{
-      console.log('update string')
-      dispatch({
-        type: 'UPDATE_STRING',
-        str,
-      })
-    },1000)
-    if (throttle) clearTimeout(throttle)
+    dispatch({
+      type: 'UPDATE_STRING',
+      str,
+    })
   }
 
   const qrCodeMethods = {
@@ -71,12 +68,15 @@ const QrCodeProvider = props => {
   }
 
   useEffect(()=>{
-    if (qrCode.str !== '') {
-      const params = {
-        msg: qrCode.str,
+    if (throttle) clearTimeout(throttle)
+    throttle = setTimeout(()=>{
+      if (qrCode.str !== '') {
+        const params = {
+          msg: qrCode.str,
+        }
+        apicall(params)
       }
-      apicall(params)
-    }
+    }, 500)
   }, [qrCode.str])
 
   return (
