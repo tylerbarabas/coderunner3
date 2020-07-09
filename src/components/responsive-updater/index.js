@@ -1,17 +1,24 @@
 import React, {
   useEffect,
+  useContext,
 } from 'react'
+import { ResponsiveContext } from '../../contexts/responsive'
 
 const ResponsiveUpdater = props => {
-  const updateResponsive = e => {
+  const {
+    responsive,
+    updateResponsive,
+  } = useContext(ResponsiveContext)
+  console.log('responsive', responsive)
+  const _updateResponsive = e => {
     const {
       innerHeight,
       innerWidth,
     } = e.target
-    console.log('update responsive', innerWidth, innerHeight)
+    updateResponsive(innerWidth, innerHeight)
   }
   useEffect(()=>{
-    window.addEventListener('resize',updateResponsive)
+    window.addEventListener('resize',_updateResponsive)
   },[])
   return null
 }
