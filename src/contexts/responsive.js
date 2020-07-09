@@ -16,11 +16,15 @@ const DEFAULT = {
 
 const ResponsiveProvider = props => {
   const [ responsive, dispatch ] = useReducer(responsiveReducer, DEFAULT)
-
-  const updateResponsive = r => {
+  const getObject = (innerWidth, innerHeight) =>{
+    let obj = DEFAULT
+    return obj
+  }
+  const updateResponsive = (innerWidth, innerHeight) => {
+    const obj = getObject(innerWidth, innerHeight)
     dispatch({
       action: 'UPDATE',
-      ...r
+      ...obj,
     })
   }
 
