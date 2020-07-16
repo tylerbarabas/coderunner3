@@ -3,15 +3,20 @@ import React, {
 } from 'react'
 import { QrCodeContext } from  '../../contexts/qrcode'
 
-const _getPreview = src => {
-  if (src.indexOf('/frames/1') !== -1) {
+const _getPreview = qrCode => {
+  const {
+    id,
+    animation,
+  } = qrCode
+  if (step < 3) {
     return (
       <div
         style={{
           padding: '15%',
         }}
       >
-        <figure className="image is-1by1"
+        <figure
+          className="image is-1by1"
         >
           <img
             src={src}
@@ -38,7 +43,7 @@ const Preview = props => {
   return (
     <div className="columns is-vcentered is-fullheight">
       <div className="column  has-text-centered">
-        {_getPreview(props.src)}
+        {_getPreview(qrCode)}
         {qrCode.str}
       </div>
     </div> 

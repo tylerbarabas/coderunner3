@@ -13,6 +13,8 @@ const DEFAULT = {
   isRequesting: false,
   id: null,
   str: '',
+  step: 1,
+  animation: null,
 }
 
 let throttle = null
