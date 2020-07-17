@@ -1,5 +1,5 @@
 import React from 'react'
-import Preview from '../../components/preview'
+import Preview from '../../views/preview'
 import StepOne from '../../views/step-one'
 
 const Wrapper = () => {
