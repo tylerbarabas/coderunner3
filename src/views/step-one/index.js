@@ -2,16 +2,21 @@ import React, {
   useContext,
 } from 'react'
 import { QrCodeContext } from '../../contexts/qrcode'
+import { ResponsiveContext } from '../../contexts/responsive'
 
 const StepOne = () => {
   const {
     qrCode,
     qrCodeMethods,
   } = useContext(QrCodeContext)
+  const {
+    responsive,
+  } = useContext(ResponsiveContext)
   const { str } = qrCode
   const { updateStr } = qrCodeMethods
+  console.log('look', responsive)
   return (
-    <div className="columns is-fullheight is-vcentered is-hidden-mobile">
+    <div className="columns is-fullheight is-vcentered">
       <div className="column">
         <p className="is-size-2">4 steps to animate your code!</p>
         <p className="is-size-2">Set your scan destination?</p>
@@ -19,11 +24,6 @@ const StepOne = () => {
           type="text"
           placeholder="www.example.com"
           className="input is-inline"
-          style={{
-            height: '50px',
-            width: '300px',
-            fontSize: '20px',
-          }}
           onChange={e=>{
             const { value } = e.target
             updateStr(value)
