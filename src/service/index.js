@@ -1,4 +1,5 @@
 const DOMAIN = 'https://api.acme.codes'
+const DEFAULT = 'https://acme.ink/welcome/default.mp4'
 const _getFullPath = path => `${DOMAIN}${path}`
 
 //URIS
@@ -6,6 +7,7 @@ const uri_createStaticCode = _getFullPath('/new?msg=:msg&frameNumber=1&anim=stat
 
 //Vars to export
 const constants = {
+  DEFAULT,
   DOMAIN,
 }
 

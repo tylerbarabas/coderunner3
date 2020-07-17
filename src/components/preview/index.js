@@ -4,16 +4,19 @@ import React, {
 import { QrCodeContext } from  '../../contexts/qrcode'
 import Service from '../../service'
 
-const { DOMAIN } = Service
+const { DOMAIN, DEFAULT } = Service
 const _getFirstFrame = id => `${DOMAIN}/orders/${id}/frames/1`
 const _getMp4 = id => `${DOMAIN}/orders/${id}/mp4`
+
 const _getPreview = qrCode => {
   const {
     id,
     animation,
     step,
   } = qrCode
-  if (step < 3) {
+  let src = DEFAULT
+  if (id && !animation) {
+    src = _getFirstFrame(id)
     return (
       <div
         style={{
@@ -24,15 +27,16 @@ const _getPreview = qrCode => {
           className="image is-1by1"
         >
           <img
-            src={_getFirstFrame(id)}
+            src={src}
           />
         </figure>
       </div>
     )
   }
+  if (id) src = _getMp4(id)
   return (
     <video
-      src={_getMp4(id)}
+      src={src}
       autoPlay
       playsInline
       loop
