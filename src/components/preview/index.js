@@ -35,13 +35,24 @@ const _getPreview = qrCode => {
   }
   if (id) src = _getMp4(id)
   return (
-    <video
-      src={src}
-      autoPlay
-      playsInline
-      loop
-      muted
-    />
+    <div
+      style={{
+        padding: '15%',
+      }}
+    >
+      <figure
+        className="image is-1by1"
+      >
+        <video
+          src={src}
+          autoPlay
+          playsInline
+          loop
+          muted
+          className="has-ratio"
+        />
+      </figure>
+    </div>
   )
 }
 
