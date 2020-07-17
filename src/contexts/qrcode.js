@@ -25,10 +25,10 @@ const QrCodeProvider = props => {
   const apicall = async args => {
     updateCallStatus('requesting')
     const r = await Service.createStaticCode(args)
-    let newid = null
+    let json = null
     if (r.ok) {
-      newid = await r.json()
-      updateCallStatus('success', newid)
+      json = await r.json()
+      updateCallStatus('success', json.orderNumber)
     } else {
       updateCallStatus('fail')
     }
