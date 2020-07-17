@@ -16,6 +16,12 @@ const ResponsiveUpdater = props => {
     updateResponsive(innerWidth)
   }
   useEffect(()=>{
+    const fakeEvent = {
+      target: {
+        innerWidth: window.innerWidth
+      }
+    }
+    _updateResponsive(fakeEvent)
     window.addEventListener('resize',_updateResponsive)
   },[])
   return null
