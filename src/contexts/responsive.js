@@ -52,7 +52,7 @@ const ResponsiveProvider = props => {
   const updateResponsive = innerWidth => {
     const obj = _makeObject(innerWidth)
     dispatch({
-      action: 'UPDATE',
+      type: 'UPDATE',
       ...obj,
     })
   }

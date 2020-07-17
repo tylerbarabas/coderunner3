@@ -14,7 +14,6 @@ const StepOne = () => {
   } = useContext(ResponsiveContext)
   const { str } = qrCode
   const { updateStr } = qrCodeMethods
-  console.log('look', responsive)
   return (
     <div className="columns is-fullheight is-vcentered">
       <div className="column">
