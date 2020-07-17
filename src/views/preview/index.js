@@ -9,6 +9,11 @@ const { DOMAIN, DEFAULT } = Service
 const _getFirstFrame = id => `${DOMAIN}/orders/${id}/frames/1`
 const _getMp4 = id => `${DOMAIN}/orders/${id}/mp4`
 
+const _keepTrying = e => {
+  const { src } = e.target
+  e.target.src = null
+  e.target.src = src
+}
 const _getPreview = qrCode => {
   const {
     responsive,
@@ -41,6 +46,7 @@ const _getPreview = qrCode => {
         >
           <img
             src={src}
+            onError={_keepTrying}
           />
         </figure>
       </div>
@@ -63,6 +69,7 @@ const _getPreview = qrCode => {
           loop
           muted
           className="has-ratio"
+          onError={_keepTrying}
         />
       </figure>
     </div>
