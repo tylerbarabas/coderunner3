@@ -12,3 +12,12 @@ html, body{
 .is-fullwidth{
   width: 100%;
 }
+.m0auto{
+  margin: 0 auto;
+}
+.image{
+  .is-256x256{
+    height: 256px;
+    width: 256px;
+  }
+}
