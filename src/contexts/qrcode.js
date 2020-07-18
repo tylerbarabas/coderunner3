@@ -15,6 +15,8 @@ const DEFAULT = {
   str: '',
   step: 1,
   animation: null,
+  progress: 0,
+  stage: null,
 }
 
 let throttle = null
