@@ -9,8 +9,10 @@ import qrCodeReducer from '../reducers/qrcode'
 export const QrCodeContext = createContext()
 
 const DEFAULT = {
-  hasRequested: false,
-  isRequesting: false,
+  orderRequesting: false,
+  orderError: false,
+  progressRequesting: false,
+  progressError: false,
   id: null,
   str: '',
   step: 1,
@@ -23,6 +25,24 @@ let throttle = null
 
 const QrCodeProvider = props => {
   const [ qrCode, dispatch ] = useReducer(qrCodeReducer, DEFAULT)
+
+  const _progressLoop = async orderNumber => {
+    dispatch({
+      type: 'PROGRESS_REQUESTING',
+    })
+    const r = await Service.checkProgress(orderNumber)
+    if (r.ok) {
+      const data = await r.json()
+      dispatch({
+        type: 'PROGRESS_SUCCESS',
+        data,
+      })
+    } else {
+      dispatch({
+        type: 'PROGRESS_FAIL'
+      })
+    }
+  }
   
   const _makeOrder = async args => {
     dispatch({
@@ -36,6 +56,7 @@ const QrCodeProvider = props => {
         type: 'ORDER_SUCCESS',
         id: json.orderNumber,
       })
+      _progressLoop(json.orderNumber)
     } else {
       dispatch({
         type: 'ORDER_FAIL',

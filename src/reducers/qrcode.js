@@ -3,23 +3,39 @@ export default (state, action) =>{
     case 'ORDER_REQUESTING':
       return {
         ...state,
-        isRequesting: true,
-        isError: false,
+        orderRequesting: true,
+        orderError: false,
       }
     case 'ORDER_SUCCESS':
       return {
         ...state,
-        hasRequested: true,
-        isRequesting: false,
-        isError: false,
+        orderRequesting: false,
+        orderError: false,
         id: action.id,
       }
     case 'ORDER_FAIL':
       return {
         ...state,
-        hasRequested: true,
-        isRequesting: false,
-        isError: true,
+        orderRequesting: false,
+        orderError: true,
+      }
+    case 'PROGRESS_REQUESTING':
+      return {
+        ...state,
+        progressRequeting: true,
+        progressError: false,
+      }
+    case 'PROGRESS_SUCCESS':
+      return {
+        ...state,
+        progressRequesting: false,
+        progressError: false,
+      }
+    case 'PROGRESS_FAIL':
+      return {
+        ...state,
+        progressRequesting: false,
+        progressError: true,
       }
     case 'UPDATE_STRING':
       return {
