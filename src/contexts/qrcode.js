@@ -24,40 +24,23 @@ let throttle = null
 const QrCodeProvider = props => {
   const [ qrCode, dispatch ] = useReducer(qrCodeReducer, DEFAULT)
   
-  const apicall = async args => {
-    updateCallStatus('requesting')
+  const _makeOrder = async args => {
+    dispatch({
+      type: 'ORDER_REQUESTING',
+    })
     const r = await Service.createStaticCode(args)
     let json = null
     if (r.ok) {
       json = await r.json()
-      updateCallStatus('success', json.orderNumber)
+      dispatch({
+        type: 'ORDER_SUCCESS',
+        id: json.orderNumber,
+      })
     } else {
-      updateCallStatus('fail')
+      dispatch({
+        type: 'ORDER_FAIL',
+      })
     }
-  }
-
-  const updateCallStatus = (s, id) => {
-    let obj = {}
-    switch(s){
-      case 'success':
-        obj = {
-          type: 'ORDER_SUCCESS',
-          id,
-        }
-      break
-      case 'fail':
-        obj = {
-          type: 'ORDER_FAIL',
-        }
-      break
-      case 'requesting':
-      default:
-        obj = {
-          type: 'ORDER_REQUESTING',
-        }
-      break
-    }
-    dispatch(obj)
   }
 
   const updateStr = str => {
@@ -78,7 +61,7 @@ const QrCodeProvider = props => {
         const params = {
           msg: qrCode.str,
         }
-        apicall(params)
+        _makeOrder(params)
       }
     }, 500)
   }, [qrCode.str])
