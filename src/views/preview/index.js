@@ -30,7 +30,6 @@ const _getPreview = qrCode => {
   const {
     id,
     animation,
-    step,
   } = qrCode
   let src = DEFAULT
   if (id && !animation) {
@@ -47,6 +46,7 @@ const _getPreview = qrCode => {
           <img
             src={src}
             onError={_keepTrying}
+            alt="Preview"
           />
         </figure>
       </div>
