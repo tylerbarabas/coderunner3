@@ -15,7 +15,7 @@ const constants = {
 //Methods to export
 const methods = {
   createStaticCode: async ({ msg }) => {
-    if (typeof msg !== 'string' || msg.length < 1) throw 'Cannot create static code. No msg to encode.'
+    if (typeof msg !== 'string' || msg.length < 1) console.error('Cannot create static code. No msg to encode.')
     const uri = uri_createStaticCode.replace(/:msg/, msg)
     const res = await fetch(uri)
     return res
