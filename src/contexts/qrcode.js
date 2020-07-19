@@ -43,26 +43,6 @@ const QrCodeProvider = props => {
       })
     }
   }
-  
-  const _makeOrder = async args => {
-    dispatch({
-      type: 'ORDER_REQUESTING',
-    })
-    const r = await Service.createStaticCode(args)
-    let json = null
-    if (r.ok) {
-      json = await r.json()
-      dispatch({
-        type: 'ORDER_SUCCESS',
-        id: json.orderNumber,
-      })
-      _progressLoop(json.orderNumber)
-    } else {
-      dispatch({
-        type: 'ORDER_FAIL',
-      })
-    }
-  }
 
   const updateStr = str => {
     dispatch({
@@ -81,6 +61,25 @@ const QrCodeProvider = props => {
       if (qrCode.str !== '') {
         const params = {
           msg: qrCode.str,
+        }
+        const _makeOrder = async args => {
+          dispatch({
+            type: 'ORDER_REQUESTING',
+          })
+          const r = await Service.createStaticCode(args)
+          let json = null
+          if (r.ok) {
+            json = await r.json()
+            dispatch({
+              type: 'ORDER_SUCCESS',
+              id: json.orderNumber,
+            })
+            _progressLoop(json.orderNumber)
+          } else {
+            dispatch({
+              type: 'ORDER_FAIL',
+            })
+          }
         }
         _makeOrder(params)
       }
