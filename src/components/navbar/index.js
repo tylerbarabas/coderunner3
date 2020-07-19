@@ -1,13 +1,8 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome } from '@fortawesome/free-solid-svg-icons'
-import { QrCodeContext } from '../../contexts/qrcode'
 
 const Navbar = () => {
-  const { qrCodeMethods } = useContext(QrCodeContext)
-  const {
-    updateStr,
-  } = qrCodeMethods
   return (
     <nav className="navbar is-primary px-2" role="navigation" aria-label="main navigation">
       <div className="columns is-vcentered is-desktop is-mobile" style={{width: '102%'}}>
