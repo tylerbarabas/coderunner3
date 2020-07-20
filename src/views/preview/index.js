@@ -27,7 +27,7 @@ const _getPreview = qrCode => {
   let size = 'is-1by1'
   if (isTouch) {
     size = 'is-256by256'
-    if (isMobile) size = 'is-128by128'
+    if (isMobile) size = 'is-96by96'
   }
   const {
     id,
