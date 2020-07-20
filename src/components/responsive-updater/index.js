@@ -1,28 +1,32 @@
 import {
   useEffect,
   useContext,
+  useCallback,
 } from 'react'
 import { ResponsiveContext } from '../../contexts/responsive'
+let count = 0
 
 const ResponsiveUpdater = props => {
   const {
     updateResponsive,
   } = useContext(ResponsiveContext)
+  const _updateResponsive = useCallback(e => {
+    const {
+      innerWidth,
+    } = e.target
+    updateResponsive(innerWidth)
+  },[updateResponsive])
   useEffect(()=>{
+    if (count > 0) return 
+    count += 1
     const fakeEvent = {
       target: {
         innerWidth: window.innerWidth
       }
     }
-    const _updateResponsive = e => {
-      const {
-        innerWidth,
-      } = e.target
-      updateResponsive(innerWidth)
-    }
     _updateResponsive(fakeEvent)
     window.addEventListener('resize',_updateResponsive)
-  },[updateResponsive])
+  },[_updateResponsive])
   return null
 }
 
