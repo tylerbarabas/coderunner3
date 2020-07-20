@@ -75,7 +75,7 @@ const QrCodeProvider = props => {
                       type: 'PROGRESS_SUCCESS',
                       data,
                     })
-                  }, 500)
+                  }, 1000)
                 }
               } else {
                 dispatch({
