@@ -26,24 +26,7 @@ let throttle = null
 const QrCodeProvider = props => {
   const [ qrCode, dispatch ] = useReducer(qrCodeReducer, DEFAULT)
 
-  const _progressLoop = async orderNumber => {
-    dispatch({
-      type: 'PROGRESS_REQUESTING',
-    })
-    const r = await Service.checkProgress(orderNumber)
-    if (r.ok) {
-      const data = await r.json()
-      dispatch({
-        type: 'PROGRESS_SUCCESS',
-        data,
-      })
-      if (data.progress < 100) _progressLoop(orderNumber)
-    } else {
-      dispatch({
-        type: 'PROGRESS_FAIL'
-      })
-    }
-  }
+
 
   const updateStr = str => {
     dispatch({
@@ -75,6 +58,24 @@ const QrCodeProvider = props => {
               type: 'ORDER_SUCCESS',
               id: json.orderNumber,
             })
+            const _progressLoop = async orderNumber => {
+              dispatch({
+                type: 'PROGRESS_REQUESTING',
+              })
+              const r = await Service.checkProgress(orderNumber)
+              if (r.ok) {
+                const data = await r.json()
+                dispatch({
+                  type: 'PROGRESS_SUCCESS',
+                  data,
+                })
+                if (data.progress < 100) _progressLoop(orderNumber)
+              } else {
+                dispatch({
+                  type: 'PROGRESS_FAIL'
+                })
+              }
+            }
             _progressLoop(json.orderNumber)
           } else {
             dispatch({
