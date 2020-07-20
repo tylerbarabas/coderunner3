@@ -22,14 +22,12 @@ const _getPreview = qrCode => {
   } = useContext(ResponsiveContext)
   const {
     isTouch,
-    isMobile,
     orientation,
   } = responsive
-  const height = (orientation === 'landscape') ? '' : '250px'
+  const height = (orientation === 'landscape') ? '' : ''
   let size = 'is-1by1'
   if (isTouch) {
-    size = 'is-256by256'
-    if (isMobile) size = 'is-96by96'
+    size = 'is-96by96'
   }
   const {
     id,
@@ -62,29 +60,23 @@ const _getPreview = qrCode => {
   }
   if (id) src = _getMp4(id)
   return (
-    <div
-      style={{
-        padding: '15%',
-      }}
+    <figure
+      className={`image ${size} m0auto`}
     >
-      <figure
-        className={`image ${size} m0auto`}
-      >
-        <video
-          src={src}
-          autoPlay
-          playsInline
-          loop
-          muted
-          className="has-ratio"
-          onError={_keepTrying}
-          style={{
-            height,
-            width: height,
-          }}
-        />
-      </figure>
-    </div>
+      <video
+        src={src}
+        autoPlay
+        playsInline
+        loop
+        muted
+        className="has-ratio"
+        onError={_keepTrying}
+        style={{
+          height,
+          width: height,
+        }}
+      />
+    </figure>
   )
 }
 

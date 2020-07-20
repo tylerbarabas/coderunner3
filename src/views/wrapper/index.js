@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import Preview from '../../views/preview'
 import StepOne from '../../views/step-one'
 
