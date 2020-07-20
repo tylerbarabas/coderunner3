@@ -9,6 +9,7 @@ export default (state, action) => {
       isDesktop: action.isDesktop,
       isWideScreen: action.isWideScreen,
       isFullHD: action.isFullHD,
+      orientation: action.orientation,
     }
   default:
     return state

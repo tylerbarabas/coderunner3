@@ -13,7 +13,10 @@ const DEFAULT = {
   isDesktop: false,
   isWideScreen: false,
   isFullHD: false,
+  orientation: null,
 }
+
+const _getOrientation = ()=>(window.innerWidth > window.innerHeight) ? 'landscape' : 'portrait'
 
 const _makeObject = innerWidth =>{
   let {
@@ -42,6 +45,7 @@ const _makeObject = innerWidth =>{
     isDesktop,
     isWideScreen,
     isFullHD,
+    orientation: _getOrientation(),
   }
 }
 
