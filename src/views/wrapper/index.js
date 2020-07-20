@@ -4,7 +4,7 @@ import StepOne from '../../views/step-one'
 
 const Wrapper = () => {
   return (
-    <div className="section is-fullheight">
+    <div className="section" style={{height: '95%'}}>
       <div className="columns is-fullheight">
         <div className="column is-half has-background-white">
           <Preview />
