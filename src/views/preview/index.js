@@ -23,7 +23,9 @@ const _getPreview = qrCode => {
   const {
     isTouch,
     isMobile,
+    orientation,
   } = responsive
+  const height = (orientation === 'landscape') ? '' : '250px'
   let size = 'is-1by1'
   if (isTouch) {
     size = 'is-256by256'
@@ -49,6 +51,10 @@ const _getPreview = qrCode => {
             src={src}
             onError={_keepTrying}
             alt="Preview"
+            style={{
+              height,
+              width: height,
+            }}
           />
         </figure>
       </div>
@@ -72,6 +78,10 @@ const _getPreview = qrCode => {
           muted
           className="has-ratio"
           onError={_keepTrying}
+          style={{
+            height,
+            width: height,
+          }}
         />
       </figure>
     </div>
