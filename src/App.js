@@ -1,8 +1,8 @@
 import React from 'react'
-import Navbar from './components/navbar'
 import QrCodeProvider from './contexts/qrcode'
 import ResponsiveProvider from './contexts/responsive'
-import ResponsiveUpdater from './components/responsive-updater'
+import ResponsiveUpdater from './views/responsive-updater'
+import Navbar from './views/navbar'
 import Wrapper from './views/wrapper'
 
 const App = () => {
