@@ -10,9 +10,11 @@ const _getFirstFrame = id => `${DOMAIN}/orders/${id}/frames/1`
 const _getMp4 = id => `${DOMAIN}/orders/${id}/mp4`
 
 const _keepTrying = e => {
-  const { src } = e.target
-  e.target.src = null
-  e.target.src = src
+  const { target } = e
+  const { src } = target
+  setTimeout(()=>{
+    target.src = src
+  },500)
 }
 const _getPreview = qrCode => {
   const {
@@ -76,6 +78,12 @@ const _getPreview = qrCode => {
   )
 }
 
+const _getProgress = qrCode => {
+  return (
+    <p>{qrCode.progress}</p>
+  )
+}
+
 const Preview = props => {
   const {
     qrCode,
@@ -83,7 +91,7 @@ const Preview = props => {
   return (
     <div className="columns is-vcentered is-fullheight">
       <div className="column  has-text-centered">
-        {_getPreview(qrCode)}
+        {(qrCode.progress < 100) ? _getProgress(qrCode) : _getPreview(qrCode)}
         {qrCode.str}
       </div>
     </div> 

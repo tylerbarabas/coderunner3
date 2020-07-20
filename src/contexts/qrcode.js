@@ -17,7 +17,7 @@ const DEFAULT = {
   str: '',
   step: 1,
   animation: null,
-  progress: 0,
+  progress: 100,
   stage: null,
 }
 
@@ -25,8 +25,6 @@ let throttle = null
 
 const QrCodeProvider = props => {
   const [ qrCode, dispatch ] = useReducer(qrCodeReducer, DEFAULT)
-
-
 
   const updateStr = str => {
     dispatch({
@@ -65,11 +63,20 @@ const QrCodeProvider = props => {
               const r = await Service.checkProgress(orderNumber)
               if (r.ok) {
                 const data = await r.json()
-                dispatch({
-                  type: 'PROGRESS_SUCCESS',
-                  data,
-                })
-                if (data.progress < 100) _progressLoop(orderNumber)
+                if (data.progress < 100) {
+                  _progressLoop(orderNumber)
+                  dispatch({
+                    type: 'PROGRESS_SUCCESS',
+                    data,
+                  })
+                } else {
+                  setTimeout(()=>{
+                    dispatch({
+                      type: 'PROGRESS_SUCCESS',
+                      data,
+                    })
+                  }, 500)
+                }
               } else {
                 dispatch({
                   type: 'PROGRESS_FAIL'

@@ -5,6 +5,8 @@ export default (state, action) =>{
         ...state,
         orderRequesting: true,
         orderError: false,
+        progress: 0,
+        stage: null,
       }
     case 'ORDER_SUCCESS':
       return {
@@ -30,6 +32,8 @@ export default (state, action) =>{
         ...state,
         progressRequesting: false,
         progressError: false,
+        progress: action.data.progress,
+        stage: action.data.stage,
       }
     case 'PROGRESS_FAIL':
       return {
