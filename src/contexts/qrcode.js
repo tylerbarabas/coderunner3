@@ -37,6 +37,7 @@ const QrCodeProvider = props => {
         type: 'PROGRESS_SUCCESS',
         data,
       })
+      if (data.progress < 100) _progressLoop(orderNumber)
     } else {
       dispatch({
         type: 'PROGRESS_FAIL'
