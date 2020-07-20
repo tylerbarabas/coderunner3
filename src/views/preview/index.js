@@ -21,14 +21,14 @@ const _getPreview = qrCode => {
     responsive,
   } = useContext(ResponsiveContext)
   const {
+    isMobile,
     isTouch,
     orientation,
   } = responsive
   const height = (orientation === 'landscape') ? '' : ''
   let size = 'is-1by1'
-  if (isTouch) {
-    size = 'is-96by96'
-  }
+  if (isTouch) size = 'is-256by256'
+  if (isMobile) size = 'is-96by96'
   const {
     id,
     animation,
@@ -43,7 +43,7 @@ const _getPreview = qrCode => {
         }}
       >
         <figure
-          className={`image ${size} m0auto`}
+          className={`image ${size}`}
         >
           <img
             src={src}
@@ -92,7 +92,7 @@ const Preview = props => {
   } = useContext(QrCodeContext)
   return (
     <div className="columns is-vcentered">
-      <div className="column  has-text-centered">
+      <div className="column has-text-centered px-6 py-6">
         {(qrCode.progress < 100) ? _getProgress(qrCode) : _getPreview(qrCode)}
         {qrCode.str}
       </div>

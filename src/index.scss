@@ -6,17 +6,11 @@ html, body{
   background-color: $primary;
   padding-bottom: 0.5rem;
 }
-.is-fullheight{
-  height: 100%;
-}
-.is-fullwidth{
-  width: 100%;
-}
 .m0auto{
   margin: 0 auto;
 }
 .image{
-  .is-256x256{
+  .is-256by256{
     height: 256px;
     width: 256px;
   }
