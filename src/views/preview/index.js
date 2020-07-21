@@ -91,12 +91,24 @@ const Preview = props => {
     qrCode,
   } = useContext(QrCodeContext)
   return (
-    <div className="columns is-vcentered">
-      <div className="column has-text-centered px-6 py-6">
-        {(qrCode.progress < 100) ? _getProgress(qrCode) : _getPreview(qrCode)}
-        {qrCode.str}
+    <section className="hero is-fullheight">
+      <div clasNames="hero-body">
+        <div className="container">
+          <h1 className="title">
+            Hero title
+          </h1>
+          <h2 className="subtitle">
+            Hero subtitle
+          </h2>
+        </div>
       </div>
-    </div> 
+      <div className="columns is-vcentered">
+        <div className="column has-text-centered px-6 py-6">
+          {(qrCode.progress < 100) ? _getProgress(qrCode) : _getPreview(qrCode)}
+          {qrCode.str}
+        </div>
+      </div>
+    </section>
   )
 }
 
