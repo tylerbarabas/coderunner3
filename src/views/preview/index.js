@@ -26,7 +26,7 @@ const _getPreview = qrCode => {
     orientation,
   } = responsive
   const height = (orientation === 'landscape') ? '' : ''
-  let size = 'is-1by1'
+  let size = 'is-512by512'
   if (isTouch) size = 'is-256by256'
   if (isMobile) size = 'is-96by96'
   const {
