@@ -14,18 +14,18 @@ const Wrapper = () => {
   return (
     <div>
       <div className={`row-container ${hidden.landscape}`}>
-        <div className="has-background-white">
+        <div className="row-half has-background-white">
           <Preview />
         </div>
-        <div className="">
+        <div className="row-half">
           <StepOne />
         </div>
       </div>
       <div className={`col-container ${hidden.portrait}`}>
-        <div className="">
+        <div className="col-half has-background-white">
           <Preview />
         </div>
-        <div className="">
+        <div className="col-half">
           <StepOne />
         </div>
       </div>

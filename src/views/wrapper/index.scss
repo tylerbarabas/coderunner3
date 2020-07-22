@@ -1,9 +1,17 @@
 .row-container{
   display: flex;
   flex-direction: row;
+
+  .row-half{
+    width: 50%;
+  }
 }
 
 .col-container{
   display: flex;
   flex-direction: column;
+
+  .col-half{
+    height: 50%;
+  }
 }
