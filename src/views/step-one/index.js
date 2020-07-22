@@ -22,8 +22,8 @@ const StepOne = () => {
     small: (isMobile) ? 'is-size-5' : 'is-size-4',
   }
   return (
-    <div className="columns is-fullheight is-vcentered">
-      <div className="column">
+    <div className="columns is-desktop is-mobile is-vcentered h100">
+      <div className="column has-text-white has-text-centered">
         <p className={font.large}>4 steps to animate your code!</p>
         <p className={`${font.large} mb-6`}>Set your scan destination?</p>
         <input

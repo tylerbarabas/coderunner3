@@ -44,7 +44,7 @@ const _getPreview = qrCode => {
             src={src}
             onError={_keepTrying}
             alt="Preview"
-            className={`${size}`}
+            className={`m0auto ${size}`}
           />
         </figure>
     )
@@ -78,8 +78,8 @@ const Preview = props => {
     qrCode,
   } = useContext(QrCodeContext)
   return (
-    <section className="container fluid" style={{height: '100%'}}>
-      <div className="columns is-vcentered is-desktop is-mobile" style={{height: '100%'}}>
+    <section className="container fluid h100">
+      <div className="columns is-vcentered is-desktop is-mobile h100">
         <div className="column has-text-centered">
           {(qrCode.progress < 100) ? _getProgress(qrCode) : _getPreview(qrCode)}
           {qrCode.str}
