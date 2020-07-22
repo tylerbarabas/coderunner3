@@ -10,10 +10,10 @@ const Wrapper = () => {
   const hidden = {
     landscape: (orientation === 'landscape')?'':'is-hidden',
     portrait: (orientation === 'portrait')?'':'is-hidden',
-  }  
+  }
   return (
     <div>
-      <div className={`row-container ${hidden.landscape}`}>
+      <div className={`row-container ${hidden.landscape}`} style={{height: window.innerHeight - 55}}>
         <div className="row-half has-background-white">
           <Preview />
         </div>
@@ -21,7 +21,7 @@ const Wrapper = () => {
           <StepOne />
         </div>
       </div>
-      <div className={`col-container ${hidden.portrait}`}>
+      <div className={`col-container ${hidden.portrait}`} style={{height: window.innerHeight - 55}}>
         <div className="col-half has-background-white">
           <Preview />
         </div>
