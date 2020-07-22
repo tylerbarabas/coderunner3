@@ -21,14 +21,14 @@ const _getPreview = qrCode => {
     responsive,
   } = useContext(ResponsiveContext)
   const {
+    isFullHD,
+    isWideScreen,
     isMobile,
     isTouch,
     orientation,
   } = responsive
-  const height = (orientation === 'landscape') ? '' : ''
-  let size = 'is-512by512'
-  if (isTouch) size = 'is-256by256'
-  if (isMobile) size = 'is-96by96'
+  let size = 'is-256by256'
+  if (isFullHD) size = 'is-512by512'
   const {
     id,
     animation,
@@ -37,31 +37,22 @@ const _getPreview = qrCode => {
   if (id && !animation) {
     src = _getFirstFrame(id)
     return (
-      <div
-        style={{
-          padding: '15%',
-        }}
-      >
         <figure
-          className={`image ${size}`}
+          className="image"
         >
           <img
             src={src}
             onError={_keepTrying}
             alt="Preview"
-            style={{
-              height,
-              width: height,
-            }}
+            className={`${size}`}
           />
         </figure>
-      </div>
     )
   }
   if (id) src = _getMp4(id)
   return (
     <figure
-      className={`image ${size} m0auto`}
+      className={`image m0auto`}
     >
       <video
         src={src}
@@ -69,12 +60,8 @@ const _getPreview = qrCode => {
         playsInline
         loop
         muted
-        className="has-ratio"
+        className={`has-ratio ${size}`}
         onError={_keepTrying}
-        style={{
-          height,
-          width: height,
-        }}
       />
     </figure>
   )
@@ -91,8 +78,8 @@ const Preview = props => {
     qrCode,
   } = useContext(QrCodeContext)
   return (
-    <section className="container fluid">
-      <div className="columns is-vcentered">
+    <section className="container fluid" style={{height: '100%'}}>
+      <div className="columns is-vcentered is-desktop is-mobile" style={{height: '100%'}}>
         <div className="column has-text-centered">
           {(qrCode.progress < 100) ? _getProgress(qrCode) : _getPreview(qrCode)}
           {qrCode.str}
