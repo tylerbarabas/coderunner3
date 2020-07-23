@@ -13,15 +13,17 @@ const ResponsiveUpdater = props => {
   const _updateResponsive = useCallback(e => {
     const {
       innerWidth,
+      innerHeight,
     } = e.target
-    updateResponsive(innerWidth)
+    updateResponsive(innerWidth, innerHeight)
   },[updateResponsive])
   useEffect(()=>{
     if (count > 0) return 
     count += 1
     const fakeEvent = {
       target: {
-        innerWidth: window.innerWidth
+        innerWidth: window.innerWidth,
+        innerHeight: window.innerHeight,
       }
     }
     _updateResponsive(fakeEvent)

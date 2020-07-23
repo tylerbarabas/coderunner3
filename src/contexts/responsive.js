@@ -18,7 +18,7 @@ const DEFAULT = {
 
 const _getOrientation = ()=>(window.innerWidth > window.innerHeight) ? 'landscape' : 'portrait'
 
-const _makeObject = innerWidth =>{
+const _makeObject = (innerWidth, innerHeight) =>{
   let {
     isMobile,
     isTablet,
@@ -27,10 +27,10 @@ const _makeObject = innerWidth =>{
     isWideScreen,
     isFullHD,
   } = DEFAULT
-  if (innerWidth <= 768) {
+  if (innerWidth <= 768 || innerHeight <= 668) {
     isMobile = true
     isTouch = true
-  } else if (innerWidth > 768 && innerWidth < 1024) {
+  } else if ((innerWidth > 768 && innerWidth < 1024)) {
     isTablet = true
     isTouch = true
   } else if (innerWidth >= 1024) {
@@ -52,9 +52,8 @@ const _makeObject = innerWidth =>{
 
 const ResponsiveProvider = props => {
   const [ responsive, dispatch ] = useReducer(responsiveReducer, DEFAULT)
-
-  const updateResponsive = innerWidth => {
-    const obj = _makeObject(innerWidth)
+  const updateResponsive = (innerWidth, innerHeight) => {
+    const obj = _makeObject(innerWidth, innerHeight)
     dispatch({
       type: 'UPDATE',
       ...obj,
