@@ -7,7 +7,7 @@ import Service from '../../service'
 import './index.scss'
 
 const { DOMAIN, DEFAULT } = Service
-const _getFirstFrame = str => `${DOMAIN}/new?msg=${str}&anim=staticCodeOnly&format=png`
+const _getFirstFrame = str => `${DOMAIN}/new?msg=${str}&anim=staticCodeOnly&format=png&xres=350&yres=350`
 const _getMp4 = id => `${DOMAIN}/orders/${id}/mp4`
 
 const _keepTrying = e => {
