@@ -7,7 +7,7 @@ import Service from '../../service'
 import './index.scss'
 
 const { DOMAIN, DEFAULT } = Service
-const _getFirstFrame = id => `${DOMAIN}/orders/${id}/frames/1`
+const _getFirstFrame = str => `${DOMAIN}/new?msg=${str}&anim=staticCodeOnly&format=png`
 const _getMp4 = id => `${DOMAIN}/orders/${id}/mp4`
 
 const _keepTrying = e => {
@@ -28,22 +28,23 @@ const _getPreview = qrCode => {
   if (isFullHD) size = 'is-512by512'
   const {
     id,
+    str,
     animation,
   } = qrCode
   let src = DEFAULT
-  if (id && !animation) {
-    src = _getFirstFrame(id)
+  if (animation === 'staticCodeOnly' && str.length > 0) {
+    src = _getFirstFrame(str)
     return (
-        <figure
-          className="image"
-        >
-          <img
-            src={src}
-            onError={_keepTrying}
-            alt="Preview"
-            className={`m0auto ${size}`}
-          />
-        </figure>
+      <figure
+        className="image"
+      >
+        <img
+          src={src}
+          onError={_keepTrying}
+          alt="Preview"
+          className={`m0auto ${size}`}
+        />
+      </figure>
     )
   }
   if (id) src = _getMp4(id)
@@ -82,7 +83,7 @@ const Preview = props => {
         </div>
       </div>
       <div className="message-container is-size-4">
-          {qrCode.str}
+        {qrCode.str}
       </div>
     </section>
   )
