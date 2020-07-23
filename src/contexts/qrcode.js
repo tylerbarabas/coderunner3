@@ -16,7 +16,7 @@ const DEFAULT = {
   id: null,
   str: '',
   step: 1,
-  animation: null,
+  animation: 'staticCodeOnly',
   progress: 100,
   stage: null,
 }
@@ -38,6 +38,7 @@ const QrCodeProvider = props => {
   }
 
   useEffect(()=>{
+    if (qrCode.animation === 'staticCodeOnly') return
     if (throttle) clearTimeout(throttle)
     throttle = setTimeout(()=>{
       if (qrCode.str !== '') {
@@ -93,7 +94,7 @@ const QrCodeProvider = props => {
         _makeOrder(params)
       }
     }, 500)
-  }, [qrCode.str])
+  }, [qrCode.str, qrCode.animation])
 
   return (
     <QrCodeContext.Provider 
