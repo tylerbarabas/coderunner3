@@ -4,7 +4,7 @@ import { faHome } from '@fortawesome/free-solid-svg-icons'
 
 const Navbar = () => {
   return (
-    <nav className="navbar is-primary ml-3" role="navigation" aria-label="main navigation">
+    <nav className="navbar is-primary ml-5" role="navigation" aria-label="main navigation" style={{height: '60px'}}>
       <div className="columns is-vcentered is-desktop is-mobile" style={{width: '100%'}}>
         <div className="column">
           <FontAwesomeIcon icon={faHome} size='2x' />

@@ -21,7 +21,7 @@ const Wrapper = () => {
           <StepOne />
         </div>
       </div>
-      <div className={`col-container ${hidden.portrait}`} style={{height: window.innerHeight - 55}}>
+      <div className={`col-container mt-4 ${hidden.portrait}`} style={{height: window.innerHeight - 55}}>
         <div className="col-half has-background-white">
           <Preview />
         </div>
