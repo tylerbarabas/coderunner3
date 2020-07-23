@@ -23,10 +23,6 @@ const _getPreview = qrCode => {
   } = useContext(ResponsiveContext)
   const {
     isFullHD,
-    isWideScreen,
-    isMobile,
-    isTouch,
-    orientation,
   } = responsive
   let size = 'is-256by256'
   if (isFullHD) size = 'is-512by512'
