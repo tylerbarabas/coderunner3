@@ -4,6 +4,7 @@ import React, {
 import { QrCodeContext } from  '../../contexts/qrcode'
 import { ResponsiveContext } from '../../contexts/responsive'
 import Service from '../../service'
+import './index.scss'
 
 const { DOMAIN, DEFAULT } = Service
 const _getFirstFrame = id => `${DOMAIN}/orders/${id}/frames/1`
@@ -82,8 +83,10 @@ const Preview = props => {
       <div className="columns is-vcentered is-desktop is-mobile h100">
         <div className="column has-text-centered">
           {(qrCode.progress < 100) ? _getProgress(qrCode) : _getPreview(qrCode)}
-          {qrCode.str}
         </div>
+      </div>
+      <div className="message-container is-size-4">
+          {qrCode.str}
       </div>
     </section>
   )
