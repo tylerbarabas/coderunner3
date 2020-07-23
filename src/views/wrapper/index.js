@@ -13,7 +13,7 @@ const Wrapper = () => {
   }
   return (
     <div>
-      <div className={`row-container ${hidden.landscape}`} style={{height: window.innerHeight - 55}}>
+      <div className={`row-container fullscreen ${hidden.landscape}`} style={{minHeight: 400}}>
         <div className="row-half has-background-white">
           <Preview />
         </div>
@@ -21,7 +21,7 @@ const Wrapper = () => {
           <StepOne />
         </div>
       </div>
-      <div className={`col-container mt-4 ${hidden.portrait}`} style={{height: window.innerHeight - 55}}>
+      <div className={`col-container fullscreen mt-4 ${hidden.portrait}`} style={{minHeight: 700}}>
         <div className="col-half has-background-white">
           <Preview />
         </div>

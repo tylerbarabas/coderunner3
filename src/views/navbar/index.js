@@ -4,7 +4,7 @@ import { faHome } from '@fortawesome/free-solid-svg-icons'
 
 const Navbar = () => {
   return (
-    <nav className="navbar is-primary ml-5" role="navigation" aria-label="main navigation" style={{height: '60px'}}>
+    <nav className="navbar is-primary ml-5" role="navigation" aria-label="main navigation" style={{height: '55px'}}>
       <div className="columns is-vcentered is-desktop is-mobile" style={{width: '100%'}}>
         <div className="column">
           <FontAwesomeIcon icon={faHome} size='2x' />
@@ -16,7 +16,7 @@ const Navbar = () => {
               style={{textDecoration: 'underline'}}
             >contact us</a>
         </div>
-        <div className="column has-text-right pt-5 pr-0">
+        <div className="column has-text-right pt-5">
           <img src="/logo.png" alt="Coderunner | Animated QR Code Generator"/>
         </div>
       </div>
