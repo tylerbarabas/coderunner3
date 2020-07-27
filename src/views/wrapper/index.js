@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import Preview from '../../views/preview'
 import StepOne from '../../views/step-one'
+import NextButton from '../../components/next-button'
 import { ResponsiveContext } from '../../contexts/responsive'
 import './index.scss'
 
@@ -19,6 +20,7 @@ const Wrapper = () => {
         </div>
         <div className="row-half">
           <StepOne />
+          <NextButton />
         </div>
       </div>
       <div className={`col-container fullscreen mt-4 ${hidden.portrait}`} style={{minHeight: 700}}>

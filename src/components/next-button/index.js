@@ -1,3 +1,8 @@
+import React from 'react'
+import './index.scss'
+
 const NextButton = () => (
-  <div>Next</div>
+  <div className="next-button-container">Next</div>
 )
+
+export default NextButton
