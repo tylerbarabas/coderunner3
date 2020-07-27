@@ -17,6 +17,15 @@ const _keepTrying = e => {
     target.src = src
   },500)
 }
+let throttle = null
+const _throttleImage = str => {
+  if (throttle) clearTimeout(throttle)
+  throttle = setTimeout(()=>{
+    const image = document.getElementById('preview-image')
+    image.src = _getFirstFrame(str)
+    image.style.visibility = 'visible'
+  },500)
+}
 const _getPreview = qrCode => {
   const {
     responsive,
@@ -33,16 +42,18 @@ const _getPreview = qrCode => {
   } = qrCode
   let src = DEFAULT
   if (animation === 'staticCodeOnly' && str.length > 0) {
-    src = _getFirstFrame(str)
+    _throttleImage(str)
     return (
       <figure
         className="image"
       >
         <img
-          src={src}
+          src={null}
           onError={_keepTrying}
           alt="Preview"
           className={`m0auto ${size}`}
+          id="preview-image"
+          style={{visibility: 'hidden'}}
         />
       </figure>
     )
